@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>树的同构 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树的同构">
+<meta property="og:url" content="http://example.com/2020/09/07/%E6%A0%91%E7%9A%84%E5%90%8C%E6%9E%84/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.ptausercontent.com/28">
+<meta property="og:image" content="https://images.ptausercontent.com/29">
+<meta property="article:published_time" content="2020-09-07T04:06:56.000Z">
+<meta property="article:modified_time" content="2020-09-07T07:41:59.815Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.ptausercontent.com/28">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-树的同构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/07/%E6%A0%91%E7%9A%84%E5%90%8C%E6%9E%84/" class="article-date">
+  <time class="dt-published" datetime="2020-09-07T04:06:56.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      树的同构
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。<a id="more"></a></p>
+<p><img src="https://images.ptausercontent.com/28" alt="img"></p>
+</li>
+</ul>
+<p>  <img src="https://images.ptausercontent.com/29" alt="img"></p>
+<p>  现给定两棵树，请你判断它们是否是同构的。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>  输入给出2棵二叉树树的信息。对于每棵树，首先在一行中给出一个非负整数<em>N</em> (≤10)，即该树的结点数（此时假设结点从0到<em>N</em>−1编号）；随后<em>N</em>行，第<em>i</em>行对应编号第<em>i</em>个结点，给出该结点中存储的1个英文大写字母、其左孩子结点的编号、右孩子结点的编号。如果孩子结点为空，则在相应位置上给出“-”。给出的数据间用一个空格分隔。注意：题目保证每个结点中存储的字母是不同的。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>  如果两棵树是同构的，输出“Yes”，否则输出“No”。</p>
+<h2 id="输入样例1（对应图1）"><a href="#输入样例1（对应图1）" class="headerlink" title="输入样例1（对应图1）"></a>输入样例1（对应图1）</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 -</span><br><span class="line">D - -</span><br><span class="line">E 6 -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br><span class="line">8</span><br><span class="line">G - 4</span><br><span class="line">B 7 6</span><br><span class="line">F - -</span><br><span class="line">A 5 1</span><br><span class="line">H - -</span><br><span class="line">C 0 -</span><br><span class="line">D - -</span><br><span class="line">E 2 -</span><br></pre></td></tr></table></figure>
+<h2 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br></pre></td></tr></table></figure>
+<h2 id="输入样例2（对应图2）"><a href="#输入样例2（对应图2）" class="headerlink" title="输入样例2（对应图2）"></a>输入样例2（对应图2）</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">B 5 7</span><br><span class="line">F - -</span><br><span class="line">A 0 3</span><br><span class="line">C 6 -</span><br><span class="line">H - -</span><br><span class="line">D - -</span><br><span class="line">G 4 -</span><br><span class="line">E 1 -</span><br><span class="line">8</span><br><span class="line">D 6 -</span><br><span class="line">B 5 -</span><br><span class="line">E - -</span><br><span class="line">H - -</span><br><span class="line">C 0 2</span><br><span class="line">G - 3</span><br><span class="line">F - -</span><br><span class="line">A 1 4</span><br></pre></td></tr></table></figure>
+<h2 id="输出样例2"><a href="#输出样例2" class="headerlink" title="输出样例2"></a>输出样例2</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No</span><br></pre></td></tr></table></figure>
+<h2 id="测试数据（数据来源：码迷）"><a href="#测试数据（数据来源：码迷）" class="headerlink" title="测试数据（数据来源：码迷）"></a>测试数据（数据来源：<a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-2486682.html">码迷</a>）</h2><ul>
+<li><p>测试点0：sample 1 有双边换、单边换，节点编号不同但数据同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 -</span><br><span class="line">D - -</span><br><span class="line">E 6 -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br><span class="line">8</span><br><span class="line">D - -</span><br><span class="line">E 7 -</span><br><span class="line">B 1 0</span><br><span class="line">A 4 2</span><br><span class="line">C 5 -</span><br><span class="line">G - 6</span><br><span class="line">H - -</span><br><span class="line">F - -</span><br></pre></td></tr></table></figure></li>
+<li><p>测试点1：sample 2 第3层开始错，每层结点数据对，但父结点不对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 -</span><br><span class="line">D - -</span><br><span class="line">E 6 -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C - 5</span><br><span class="line">D - 6</span><br><span class="line">E - -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br></pre></td></tr></table></figure></li>
+<li><p>测试点2：结点数不同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 -</span><br><span class="line">D - -</span><br><span class="line">E 6 -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br><span class="line">9</span><br><span class="line">D - -</span><br><span class="line">E 7 -</span><br><span class="line">B 1 0</span><br><span class="line">A 4 2</span><br><span class="line">C 5 -</span><br><span class="line">G - 6</span><br><span class="line">H - -</span><br><span class="line">F - 8</span><br><span class="line">I - -</span><br></pre></td></tr></table></figure></li>
+<li><p>测试点4：只有1个结点，结构同但数据不同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3 - -</span><br><span class="line">1</span><br><span class="line">5 - -</span><br></pre></td></tr></table></figure></li>
+<li><p>测试点5：最大N，层序遍历结果相同，但树不同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 6</span><br><span class="line">D 7 8</span><br><span class="line">E 9 -</span><br><span class="line">F - -</span><br><span class="line">G - -</span><br><span class="line">H - -</span><br><span class="line">I - -</span><br><span class="line">J - -</span><br><span class="line">10</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 6</span><br><span class="line">D 7 -</span><br><span class="line">E 8 9</span><br><span class="line">F - -</span><br><span class="line">G - -</span><br><span class="line">H - -</span><br><span class="line">I - -</span><br><span class="line">J - -</span><br></pre></td></tr></table></figure>
+<h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h2></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxTree 10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ElementType char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Tree int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Null -1</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType Element;</span><br><span class="line">    Tree Left;</span><br><span class="line">    Tree Right;</span><br><span class="line">&#125; T1[MaxTree], T2[MaxTree];</span><br><span class="line"><span class="function">Tree <span class="title">BuildTree</span><span class="params">( struct TreeNode T[] )</span></span>&#123;<span class="comment">//建立二叉树，返回树根</span></span><br><span class="line">    Tree Root=Null;</span><br><span class="line">    <span class="keyword">int</span> n,i;</span><br><span class="line">    <span class="keyword">char</span> cl,cr;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d\n&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">int</span> Check[MaxTree];</span><br><span class="line">    <span class="keyword">if</span> (n)<span class="comment">//当结点数不为0时</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)<span class="comment">//用于寻找树根</span></span><br><span class="line">            Check[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%c %c %c\n&quot;</span>,&amp;T[i].Element,&amp;cl,&amp;cr);</span><br><span class="line">            <span class="keyword">if</span> (cl!=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                T[i].Left=cl-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                Check[T[i].Left]=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                T[i].Left=Null;</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">if</span> (cr!=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                T[i].Right=cr-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                Check[T[i].Right]=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                T[i].Right=Null;</span><br><span class="line">         </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Check[i]!=<span class="number">1</span>) </span><br><span class="line">                <span class="keyword">break</span>;   <span class="comment">//找到树根</span></span><br><span class="line">        &#125;</span><br><span class="line">        Root=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Isomorphic</span><span class="params">(Tree R1,Tree R2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((R1==Null)&amp;&amp;(R2==Null))<span class="comment">//两树均为空，同构 </span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (((R1==Null)&amp;&amp;(R2!=Null))||((R1!=Null)&amp;&amp;(R2==Null)))<span class="comment">//其中有一棵树为空，非同构</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (T1[R1].Element!=T2[R2].Element)<span class="comment">//树根结点不相同，非同构</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> ((T1[R1].Left==Null)&amp;&amp;(T2[R2].Left==Null))<span class="comment">//树不存在左子树</span></span><br><span class="line">        <span class="keyword">return</span> (Isomorphic(T1[R1].Right,T1[R2].Right));<span class="comment">//递归比较右子树</span></span><br><span class="line">    <span class="keyword">if</span> ( ((T1[R1].Left!=Null)&amp;&amp;(T2[R2].Left!=Null))&amp;&amp;((T1[T1[R1].Left].Element)==(T2[T2[R2].Left].Element))) <span class="comment">//两树左子树非空且相等 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//两树相同</span></span><br><span class="line">        <span class="keyword">return</span> (Isomorphic(T1[R1].Left, T2[R2].Left) &amp;&amp;Isomorphic( T1[R1].Right, T2[R2].Right));<span class="comment">//递归比较左子树的子树和右子树 </span></span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;   <span class="comment">//两树左子树不相等 </span></span><br><span class="line">        <span class="comment">//互换左右子树进行比较 </span></span><br><span class="line">        <span class="keyword">return</span> ( Isomorphic( T1[R1].Left, T2[R2].Right) &amp;&amp;Isomorphic( T1[R1].Right, T2[R2].Left ) );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   Tree R1,R2;<span class="comment">//两树的根结点</span></span><br><span class="line">   R1=BuildTree(T1);</span><br><span class="line">   R2=BuildTree(T2);</span><br><span class="line">   <span class="keyword">if</span> (Isomorphic(R1,R2))</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/07/%E6%A0%91%E7%9A%84%E5%90%8C%E6%9E%84/" data-id="ckjh2hscp001q9gv40hoqdfhu" data-title="树的同构" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/07/%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          堆中的路径
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/07/%E6%98%AF%E5%90%A6%E4%B8%BA%E5%90%8C%E4%B8%80%E9%A2%97%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">是否为同一颗二叉树</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/13/%E6%97%85%E6%B8%B8%E8%A7%84%E5%88%92/">旅游规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/">Saving James Bond - Hard Version</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95/">哈利·波特的考试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/File%20Transfer/">File Transfer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/List%20Leaves/">List Leaves</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

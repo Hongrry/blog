@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Huffman Codes | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="In 1953, David A. Huffman published his paper “A Method for the Construction of Minimum-Redundancy Codes”, and hence printed his name in the history of computer science.As a professor who gives the fi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Huffman Codes">
+<meta property="og:url" content="http://example.com/2020/09/07/Huffman%20Codes/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="In 1953, David A. Huffman published his paper “A Method for the Construction of Minimum-Redundancy Codes”, and hence printed his name in the history of computer science.As a professor who gives the fi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-07T02:58:12.000Z">
+<meta property="article:modified_time" content="2020-09-07T07:24:18.732Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Huffman Codes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/07/Huffman%20Codes/" class="article-date">
+  <time class="dt-published" datetime="2020-09-07T02:58:12.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Huffman Codes
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>In 1953, David A. Huffman published his paper “A Method for the Construction of Minimum-Redundancy Codes”, and hence printed his name in the history of computer science.As a professor who gives the final exam problem on Huffman codes, I am encountering a big problem: the Huffman codes are NOT unique. For example, given a string “aaaxuaxz”, we can observe that the frequencies of the characters ‘a’, ‘x’, ‘u’ and ‘z’ are 4, 2, 1 and 1, respectively. We may either encode the symbols as {‘a’=0, ‘x’=10, ‘u’=110, ‘z’=111}, or in another way as {‘a’=1, ‘x’=01, ‘u’=001, ‘z’=000}, both compress the string into 14 bits. Another set of code can be given as {‘a’=0, ‘x’=11, ‘u’=100, ‘z’=101}, but {‘a’=0, ‘x’=01, ‘u’=011, ‘z’=001} is NOT correct since “aaaxuaxz” and “aazuaxax” can both be decoded from the code 00001011001001. The students are submitting all kinds of codes, and I need a computer program to help me determine which ones are correct and which ones are not.</p>
+<a id="more"></a> 
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h2><p>Each input file contains one test case. For each case, the first line gives an integer <em>N</em> (2≤<em>N</em>≤63), then followed by a line that contains all the <em>N</em> distinct characters and their frequencies in the following format:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c[1] f[1] c[2] f[2] ... c[N] f[N]</span><br></pre></td></tr></table></figure>
+<p>where <code>c[i]</code> is a character chosen from {‘0’ - ‘9’, ‘a’ - ‘z’, ‘A’ - ‘Z’, ‘_’}, and <code>f[i]</code> is the frequency of <code>c[i]</code> and is an integer no more than 1000. The next line gives a positive integer <em>M</em> (≤1000), then followed by <em>M</em> student submissions. Each student submission consists of <em>N</em> lines, each in the format:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c[i] code[i]</span><br></pre></td></tr></table></figure>
+<p>where <code>c[i]</code> is the <code>i</code>-th character and <code>code[i]</code> is an non-empty string of no more than 63 ‘0’s and ‘1’s.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h2><p>For each test case, print in each line either “Yes” if the student’s submission is correct, or “No” if not.</p>
+<p>Note: The optimal solution is not necessarily generated by Huffman algorithm. Any prefix code with code length being optimal is considered correct.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">A 1 B 1 C 1 D 3 E 3 F 6 G 6</span><br><span class="line">4</span><br><span class="line">A 00000</span><br><span class="line">B 00001</span><br><span class="line">C 0001</span><br><span class="line">D 001</span><br><span class="line">E 01</span><br><span class="line">F 10</span><br><span class="line">G 11</span><br><span class="line">A 01010</span><br><span class="line">B 01011</span><br><span class="line">C 0100</span><br><span class="line">D 011</span><br><span class="line">E 10</span><br><span class="line">F 11</span><br><span class="line">G 00</span><br><span class="line">A 000</span><br><span class="line">B 001</span><br><span class="line">C 010</span><br><span class="line">D 011</span><br><span class="line">E 100</span><br><span class="line">F 101</span><br><span class="line">G 110</span><br><span class="line">A 00000</span><br><span class="line">B 00001</span><br><span class="line">C 0001</span><br><span class="line">D 001</span><br><span class="line">E 00</span><br><span class="line">F 10</span><br><span class="line">G 11</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">No</span><br></pre></td></tr></table></figure>
+<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><ol>
+<li><p>根据所给的字符及权重，创建一棵Huffman树，计算树的WPL；</p>
+</li>
+<li><p>根据所给的编码，构建一棵Huffman树，如果某个编码的最后一位结点，存在左子树或者右子树，说明该编码为某编码的前缀；</p>
+</li>
+<li><p>如果2是合法的，那么计算该树的WPL值，进行比较，如果不相同，该树不是Huffman树</p>
+</li>
+</ol>
+<h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 64</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">HuffmanTree</span>;</span> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HeapNode</span>* <span class="title">MinHeap</span>;</span></span><br><span class="line"><span class="keyword">int</span> F[MaxSize];<span class="comment">//储存结点的权重</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> W;<span class="comment">//结点权重</span></span><br><span class="line">    <span class="keyword">char</span> Data;</span><br><span class="line">    HuffmanTree Left,Right;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HeapNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    HuffmanTree *Elements;<span class="comment">//指针数组</span></span><br><span class="line">    <span class="keyword">int</span> Size;</span><br><span class="line">    <span class="keyword">int</span> Capacity;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">HuffmanTree <span class="title">CreatNode</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//创建结点</span></span><br><span class="line">    HuffmanTree Node=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">    getchar();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c %d&quot;</span>,&amp;Node-&gt;Data,&amp;Node-&gt;W);</span><br><span class="line">    F[i]=Node-&gt;W;</span><br><span class="line">    getchar();</span><br><span class="line">    Node-&gt;Left=Node-&gt;Right=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Node;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">MinHeap <span class="title">CreatMinHeap</span><span class="params">(<span class="keyword">int</span> M)</span></span>&#123;<span class="comment">//初始化个堆</span></span><br><span class="line">    MinHeap H=(MinHeap)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct HeapNode));</span><br><span class="line">    H-&gt;Elements=(HuffmanTree *)<span class="built_in">malloc</span>((M+<span class="number">1</span>)*<span class="keyword">sizeof</span>(HuffmanTree));</span><br><span class="line">    H-&gt;Capacity=M;</span><br><span class="line">    H-&gt;Elements[<span class="number">0</span>]=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">    H-&gt;Elements[<span class="number">0</span>]-&gt;W=<span class="number">-1</span>;</span><br><span class="line">    H-&gt;Size=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> H;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildHeap</span><span class="params">(MinHeap H,<span class="keyword">int</span> N)</span></span>&#123;<span class="comment">//创建一个最小堆</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> Parent,Child;</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        H-&gt;Elements[i]=CreatNode(i<span class="number">-1</span>);</span><br><span class="line">        H-&gt;Size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> ( i=H-&gt;Size/<span class="number">2</span> ; i &gt;<span class="number">0</span>; i--)&#123;</span><br><span class="line">        HuffmanTree X=H-&gt;Elements[i];</span><br><span class="line">        <span class="keyword">for</span> ( Parent=i; Parent*<span class="number">2</span> &lt;= H-&gt;Size; Parent=Child)</span><br><span class="line">        &#123;</span><br><span class="line">            Child=Parent*<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> ((Child!=H-&gt;Size)&amp;&amp;(H-&gt;Elements[Child]-&gt;W&gt;H-&gt;Elements[Child+<span class="number">1</span>]-&gt;W))  Child++;</span><br><span class="line">            <span class="keyword">if</span> (X-&gt;W&lt;H-&gt;Elements[Child]-&gt;W) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> H-&gt;Elements[Parent]=H-&gt;Elements[Child];</span><br><span class="line">        &#125;</span><br><span class="line">        H-&gt;Elements[Parent]=X;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(MinHeap H,HuffmanTree X)</span></span>&#123;<span class="comment">//插入</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    i=++H-&gt;Size;</span><br><span class="line">    <span class="keyword">while</span> (H-&gt;Elements[i/<span class="number">2</span>]-&gt;W&gt;=X-&gt;W)</span><br><span class="line">    &#123;</span><br><span class="line">        H-&gt;Elements[i]=H-&gt;Elements[i/<span class="number">2</span>];</span><br><span class="line">        i/=<span class="number">2</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">   H-&gt;Elements[i]=X; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function">HuffmanTree <span class="title">Delete</span><span class="params">(MinHeap H)</span></span>&#123;<span class="comment">//删除</span></span><br><span class="line">    HuffmanTree Min,X;</span><br><span class="line">    <span class="keyword">int</span> Parent,Child;</span><br><span class="line">    Min=H-&gt;Elements[<span class="number">1</span>];</span><br><span class="line">    X=H-&gt;Elements[H-&gt;Size--];</span><br><span class="line">    <span class="keyword">for</span> (Parent = <span class="number">1</span>; Parent*<span class="number">2</span>&lt;=H-&gt;Size; Parent=Child)</span><br><span class="line">    &#123;</span><br><span class="line">        Child=Parent*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> ((Child!=H-&gt;Size)&amp;&amp;(H-&gt;Elements[Child]-&gt;W&gt;H-&gt;Elements[Child+<span class="number">1</span>]-&gt;W))  Child++;</span><br><span class="line">        <span class="keyword">if</span> (X-&gt;W&lt;H-&gt;Elements[Child]-&gt;W)    <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> H-&gt;Elements[Parent]=H-&gt;Elements[Child];</span><br><span class="line">    &#125;</span><br><span class="line">    H-&gt;Elements[Parent]=X;</span><br><span class="line">    <span class="keyword">return</span> Min;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">HuffmanTree <span class="title">BuildTree</span><span class="params">(MinHeap H)</span></span>&#123;<span class="comment">//建一棵Huffman树</span></span><br><span class="line">    HuffmanTree T;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H-&gt;Capacity<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        T=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">        T-&gt;Left=Delete(H);</span><br><span class="line">        T-&gt;Right=Delete(H);</span><br><span class="line">        T-&gt;W=(T-&gt;Left-&gt;W)+(T-&gt;Right-&gt;W);</span><br><span class="line">        Insert(H,T);</span><br><span class="line">    &#125;</span><br><span class="line">    T=Delete(H);</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountWPL</span><span class="params">(HuffmanTree T,<span class="keyword">int</span> Higth)</span></span>&#123;<span class="comment">//计算WPL</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((T-&gt;Left==<span class="literal">NULL</span>)||(T-&gt;Right==<span class="literal">NULL</span>))</span><br><span class="line">        <span class="keyword">return</span> (T-&gt;W*Higth);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ((CountWPL(T-&gt;Left,Higth+<span class="number">1</span>))+(CountWPL(T-&gt;Right,Higth+<span class="number">1</span>)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Judge</span><span class="params">(<span class="keyword">int</span> N,<span class="keyword">int</span> M,<span class="keyword">int</span> WPL)</span></span>&#123;</span><br><span class="line">    HuffmanTree T,Temp,P;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> Code[MaxSize][MaxSize*<span class="number">2</span><span class="number">-1</span>];<span class="comment">//n个叶子结点的哈夫曼树共有2n-1个结点</span></span><br><span class="line">    T=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">    T-&gt;Left=<span class="literal">NULL</span>,T-&gt;Right=<span class="literal">NULL</span>;</span><br><span class="line">    T-&gt;W=<span class="number">-1</span>;</span><br><span class="line">    Temp=T;</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        gets(Code[i]);</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">2</span>; Code[i][j]!=<span class="string">&#x27;\0&#x27;</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Code[i][j]==<span class="string">&#x27;0&#x27;</span>)<span class="comment">//编码为0，往右创建结点</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Temp-&gt;Right==<span class="literal">NULL</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    P=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">                    P-&gt;Left=P-&gt;Right=<span class="literal">NULL</span>;</span><br><span class="line">                    P-&gt;W=<span class="number">-1</span>;</span><br><span class="line">                    Temp-&gt;Right=P;</span><br><span class="line">                    Temp=P;</span><br><span class="line">                &#125;<span class="keyword">else</span><span class="comment">//如果已经存在，就跳到其右子树</span></span><br><span class="line">                    Temp=Temp-&gt;Right;</span><br><span class="line">            &#125;<span class="keyword">else</span><span class="comment">//编码为1，往左创建结点</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Temp-&gt;Left==<span class="literal">NULL</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    P=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));</span><br><span class="line">                    P-&gt;Left=P-&gt;Right=<span class="literal">NULL</span>;</span><br><span class="line">                    P-&gt;W=<span class="number">-1</span>;</span><br><span class="line">                    Temp-&gt;Left=P;</span><br><span class="line">                    Temp=P;</span><br><span class="line">                &#125;<span class="keyword">else</span></span><br><span class="line">                    Temp=Temp-&gt;Left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (Code[i][j+<span class="number">1</span>]==<span class="string">&#x27;\0&#x27;</span>)&#123;<span class="comment">//如果是编码最后一位，获取权重</span></span><br><span class="line">                Temp-&gt;Data=Code[i][<span class="number">0</span>];</span><br><span class="line">                Temp-&gt;W=F[i];</span><br><span class="line">                <span class="keyword">if</span> (Temp-&gt;Left||Temp-&gt;Right)<span class="comment">//如果编码最后一位结点，存在左子树或者右子树，则该编码非法</span></span><br><span class="line">                    flag=<span class="number">1</span>;</span><br><span class="line">                Temp=T;<span class="comment">//每次都要回到树的根结点</span></span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">if</span> (flag)<span class="comment">//编码非法</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    <span class="keyword">if</span> (CountWPL(T,<span class="number">0</span>)==WPL)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//WPL非最小</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,M,WPL;</span><br><span class="line">    HuffmanTree T;</span><br><span class="line">    MinHeap H;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;N);</span><br><span class="line">    H=CreatMinHeap(N);</span><br><span class="line">    BuildHeap(H,N);</span><br><span class="line">    T=BuildTree(H);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d\n&quot;</span>,&amp;M);</span><br><span class="line">    WPL=CountWPL(T,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++)</span><br><span class="line">        Judge(N,M,WPL);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/07/Huffman%20Codes/" data-id="ckjh2hsbw00019gv41dmz5tu7" data-title="Huffman Codes" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/07/%E6%98%AF%E5%90%A6%E4%B8%BA%E5%90%8C%E4%B8%80%E9%A2%97%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          是否为同一颗二叉树
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/13/%E6%97%85%E6%B8%B8%E8%A7%84%E5%88%92/">旅游规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/">Saving James Bond - Hard Version</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95/">哈利·波特的考试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/File%20Transfer/">File Transfer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/List%20Leaves/">List Leaves</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

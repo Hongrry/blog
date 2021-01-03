@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Saving James Bond - Hard Version | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug dealers. He was sent to a small piece of land">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Saving James Bond - Hard Version">
+<meta property="og:url" content="http://example.com/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug dealers. He was sent to a small piece of land">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-12T13:20:56.000Z">
+<meta property="article:modified_time" content="2020-09-12T14:01:26.503Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Saving James Bond - Hard Version" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/" class="article-date">
+  <time class="dt-published" datetime="2020-09-12T13:20:56.000Z" itemprop="datePublished">2020-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Saving James Bond - Hard Version
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug dealers. He was sent to a small piece of land at the center of a lake filled with crocodiles. There he performed the most daring action to escape – he jumped onto the head of the nearest crocodile! Before the animal realized what was happening, James jumped again onto the next big head… Finally he reached the bank before the last crocodile could bite him (actually the stunt man was caught by the big mouth and barely escaped with his extra thick boot).</p>
+<a id="more"></a> 
+<p>Assume that the lake is a 100 by 100 square one. Assume that the center of the lake is at (0,0) and the northeast corner at (50,50). The central island is a disk centered at (0,0) with the diameter of 15. A number of crocodiles are in the lake at various positions. Given the coordinates of each crocodile and the distance that James could jump, you must tell him a shortest path to reach one of the banks. The length of a path is the number of jumps that James has to make.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h2><p>Each input file contains one test case. Each case starts with a line containing two positive integers <em>N</em> (≤100), the number of crocodiles, and <em>D</em>, the maximum distance that James could jump. Then <em>N</em> lines follow, each containing the (<em>x</em>,<em>y</em>) location of a crocodile. Note that no two crocodiles are staying at the same position.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h2><p>For each test case, if James can escape, output in one line the minimum number of jumps he must make. Then starting from the next line, output the position (<em>x</em>,<em>y</em>) of each crocodile on the path, each pair in one line, from the island to the bank. If it is impossible for James to escape that way, simply give him 0 as the number of jumps. If there are many shortest paths, just output the one with the minimum first jump, which is guaranteed to be unique.</p>
+<h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1"></a>Sample Input 1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">17 15</span><br><span class="line">10 -21</span><br><span class="line">10 21</span><br><span class="line">-40 10</span><br><span class="line">30 -50</span><br><span class="line">20 40</span><br><span class="line">35 10</span><br><span class="line">0 -10</span><br><span class="line">-25 22</span><br><span class="line">40 -40</span><br><span class="line">-30 30</span><br><span class="line">-10 22</span><br><span class="line">0 11</span><br><span class="line">25 21</span><br><span class="line">25 10</span><br><span class="line">10 10</span><br><span class="line">10 35</span><br><span class="line">-30 10</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1"></a>Sample Output 1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">0 11</span><br><span class="line">10 21</span><br><span class="line">10 35</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2"></a>Sample Input 2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 13</span><br><span class="line">-12 12</span><br><span class="line">12 12</span><br><span class="line">-12 -12</span><br><span class="line">12 -12</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ul>
+<li><p>根据所给的坐标，初始化一个任意两点间距离的二维数组，同时储存可以上岸的点</p>
+</li>
+<li><p>使用Folyd递推更新任意两点间的距离</p>
+</li>
+<li><p>对每一个中心圆盘可到达的点，对其分别遍历与可上岸点间的距离</p>
+<p>需要注意的情况：距离相同时，选离中心圆盘近的点;最后一个测试点，一jio可以直接跨上岸的离谱长腿欧巴</p>
+</li>
+</ul>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxVertexNum 101</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Position int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INFINITY 65535  </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Vertex;</span><br><span class="line"><span class="comment">//储存坐标</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Position X;</span><br><span class="line">    Position Y;</span><br><span class="line">&#125;Node[MaxVertexNum];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span>* <span class="title">MGraph</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> Nv;</span><br><span class="line">    Node G;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//任意两点间的距离</span></span><br><span class="line"><span class="keyword">int</span> Dist[MaxVertexNum][MaxVertexNum];</span><br><span class="line"><span class="comment">//任意两点间的中转点</span></span><br><span class="line"><span class="keyword">int</span> Path[MaxVertexNum][MaxVertexNum];</span><br><span class="line"><span class="comment">//储存可以上岸的点</span></span><br><span class="line"><span class="keyword">int</span> F[MaxVertexNum];</span><br><span class="line"><span class="keyword">int</span> F_len=<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*判断是否可以跳到下一个顶点*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Jump</span><span class="params">(Vertex V,Vertex W,<span class="keyword">int</span> D,MGraph Graph)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Flag=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*两点间的距离是否小于D*/</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">sqrt</span>(((Graph-&gt;G[V].X-Graph-&gt;G[W].X)*(Graph-&gt;G[V].X-Graph-&gt;G[W].X))+((Graph-&gt;G[V].Y-Graph-&gt;G[W].Y)*(Graph-&gt;G[V].Y-Graph-&gt;G[W].Y)))&lt;=D)</span><br><span class="line">        Flag=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*判断是否可以上岸*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Is_Safe</span><span class="params">(Vertex V,<span class="keyword">int</span> D,MGraph Graph)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Flag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (((<span class="built_in">abs</span>(Graph-&gt;G[V].X)+D)&gt;=<span class="number">50</span>)||((<span class="built_in">abs</span>(Graph-&gt;G[V].Y)+D)&gt;=<span class="number">50</span>))</span><br><span class="line">        Flag=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Folyd</span><span class="params">(MGraph Graph,<span class="keyword">int</span> D)</span></span>&#123;</span><br><span class="line">    Vertex V,W;</span><br><span class="line">    <span class="keyword">int</span> i,j,k;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="keyword">for</span> ( V = <span class="number">0</span>; V &lt; Graph-&gt;Nv; V++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> ( W = <span class="number">0</span>; W &lt; Graph-&gt;Nv; W++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (V!=W)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Jump(V,W,D,Graph))    Dist[V][W]=<span class="number">1</span>;<span class="comment">//如果两点间可跳跃，更新距离为1</span></span><br><span class="line">                <span class="keyword">else</span>   Dist[V][W]=INFINITY;<span class="comment">//否则，距离无穷大</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//判断该点是否可以上岸</span></span><br><span class="line">        <span class="keyword">if</span> (Is_Safe(V,D,Graph))     F[++F_len]=V;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Folyd，递推任意点间的距离</span></span><br><span class="line">    <span class="keyword">for</span> ( k = <span class="number">0</span>; k &lt; Graph-&gt;Nv; k++)</span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; Graph-&gt;Nv; i++)</span><br><span class="line">            <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; Graph-&gt;Nv; j++)</span><br><span class="line">                <span class="keyword">if</span> (Dist[i][k]+Dist[k][j]&lt;Dist[i][j])</span><br><span class="line">                &#123;</span><br><span class="line">                    Dist[i][j]=Dist[i][k]+Dist[k][j];</span><br><span class="line">                    Path[i][j]=k;</span><br><span class="line">                &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*判断是否可以由中心跳到该结点*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">First_Jump</span><span class="params">(Vertex V,<span class="keyword">int</span> D,MGraph Graph)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Flag=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*（0,0）为圆心，（D+中心半径）为半径的圆*/</span></span><br><span class="line">    <span class="keyword">if</span> (((Graph-&gt;G[V].X)*(Graph-&gt;G[V].X)+(Graph-&gt;G[V].Y*Graph-&gt;G[V].Y))&lt;=((<span class="number">7.5</span>+D)*(<span class="number">7.5</span>+D)))</span><br><span class="line">        Flag=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归输出路径</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Display</span><span class="params">(Vertex V,Vertex W,MGraph Graph)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Path[V][W]!=<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Display(V,Path[V][W],Graph);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>,Graph-&gt;G[Path[V][W]].X,Graph-&gt;G[Path[V][W]].Y);</span><br><span class="line">        Display(Path[V][W],W,Graph);</span><br><span class="line">    &#125;<span class="keyword">else</span>   <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Svae007</span><span class="params">(MGraph Graph,<span class="keyword">int</span> D)</span></span>&#123;</span><br><span class="line">    Vertex V,W;</span><br><span class="line">    Vertex MinS,MinF;<span class="comment">//最小距离的起点终点</span></span><br><span class="line">    <span class="keyword">int</span> MinDis=INFINITY;</span><br><span class="line">    <span class="keyword">float</span> Dis=INFINITY;<span class="comment">//与中心圆盘的最小距离</span></span><br><span class="line">    <span class="keyword">for</span> (V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++)&#123;</span><br><span class="line">        <span class="keyword">if</span> ((First_Jump(V,D,Graph)==<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//寻找每一个起点到岸的最小距离</span></span><br><span class="line">            <span class="keyword">for</span> ( W = <span class="number">0</span>; W &lt;= F_len ; W++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//找到更小的</span></span><br><span class="line">                <span class="keyword">if</span> (Dist[V][F[W]]&lt;MinDis)</span><br><span class="line">                &#123;</span><br><span class="line">                    MinS=V;</span><br><span class="line">                    MinF=F[W];</span><br><span class="line">                    MinDis=Dist[V][F[W]];</span><br><span class="line">                    Dis=<span class="built_in">sqrt</span>((Graph-&gt;G[V].X*Graph-&gt;G[V].X)+(Graph-&gt;G[V].Y)*Graph-&gt;G[V].Y);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//距离相等，比较与中心圆盘的距离</span></span><br><span class="line">                <span class="keyword">if</span> (Dist[V][F[W]]==MinDis)&#123;</span><br><span class="line">                    <span class="keyword">float</span> Temp=<span class="built_in">sqrt</span>((Graph-&gt;G[V].X*Graph-&gt;G[V].X)+(Graph-&gt;G[V].Y)*Graph-&gt;G[V].Y);</span><br><span class="line">                    <span class="keyword">if</span> (Temp&lt;Dis)</span><br><span class="line">                    &#123;</span><br><span class="line">                        MinS=V;</span><br><span class="line">                        MinF=F[W];</span><br><span class="line">                        MinDis=Dist[V][F[W]];</span><br><span class="line">                        Dis=Temp;</span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (MinDis!=INFINITY)<span class="comment">//可上岸</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,MinDis+<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>,Graph-&gt;G[MinS].X,Graph-&gt;G[MinS].Y);</span><br><span class="line">        Display(MinS,MinF,Graph);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>,Graph-&gt;G[MinF].X,Graph-&gt;G[MinF].Y);</span><br><span class="line">    &#125;<span class="keyword">else</span>   <span class="built_in">printf</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,D;</span><br><span class="line">    MGraph Graph;</span><br><span class="line">    Graph=(MGraph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct GNode));</span><br><span class="line">    <span class="built_in">memset</span>(Path,<span class="number">-1</span>,<span class="keyword">sizeof</span>(Path));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;Graph-&gt;Nv,&amp;D);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Graph-&gt;Nv; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;Graph-&gt;G[i].X,&amp;Graph-&gt;G[i].Y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((<span class="number">7.5</span>+D)&gt;=<span class="number">50</span>)<span class="comment">//一jio可以上岸的变态情况</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Folyd(Graph,D);</span><br><span class="line">    Svae007(Graph,D);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/" data-id="ckjh2hsc4000a9gv4881dcz1m" data-title="Saving James Bond - Hard Version" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/13/%E6%97%85%E6%B8%B8%E8%A7%84%E5%88%92/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          旅游规划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/12/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">哈利·波特的考试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/13/%E6%97%85%E6%B8%B8%E8%A7%84%E5%88%92/">旅游规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/">Saving James Bond - Hard Version</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95/">哈利·波特的考试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/File%20Transfer/">File Transfer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/List%20Leaves/">List Leaves</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

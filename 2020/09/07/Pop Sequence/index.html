@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Pop Sequence | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pop Sequence">
+<meta property="og:url" content="http://example.com/2020/09/07/Pop%20Sequence/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-07T04:06:56.000Z">
+<meta property="article:modified_time" content="2020-09-07T07:43:28.516Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Pop Sequence" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/07/Pop%20Sequence/" class="article-date">
+  <time class="dt-published" datetime="2020-09-07T04:06:56.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Pop Sequence
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Given a stack which can keep <em>M</em> numbers at most. Push <em>N</em> numbers in the order of 1, 2, 3, …, <em>N</em> and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if <em>M</em> is 5 and <em>N</em> is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
+<a id="more"></a>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h2><p>Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): <em>M</em> (the maximum capacity of the stack), <em>N</em> (the length of push sequence), and <em>K</em> (the number of pop sequences to be checked). Then <em>K</em> lines follow, each contains a pop sequence of <em>N</em> numbers. All the numbers in a line are separated by a space.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h2><p>For each pop sequence, print in one line “YES” if it is indeed a possible pop sequence of the stack, or “NO” if not.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 7 5</span><br><span class="line">1 2 3 4 5 6 7</span><br><span class="line">3 2 1 7 5 6 4</span><br><span class="line">7 6 5 4 3 2 1</span><br><span class="line">5 6 4 3 7 2 1</span><br><span class="line">1 7 6 5 4 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">YES</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给一个容量限制为 m 的栈，一组数 1,2,3,…,n 顺序入栈，随机出栈，问出栈序列是否合法</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>将需要判断序列的每一个元素储存，判断栈顶元素是否和序列目标元素相同，如果相同则出栈，下标后移；如果不相等，则入栈（注意是否栈满），然后再进行判断；</p>
+<p>如：5 6 4 3 7 2 1</p>
+<ul>
+<li><p>栈空，序列目标元素为5，当前栈为空，故1 2 3 4 5入栈；</p>
+</li>
+<li><p>栈顶为5，等于序列目标元素，故5出栈，当前栈1 2 3 4 ；</p>
+</li>
+<li><p>栈顶为4，不等于序列目标元素，则6入栈，当前栈1 2 3 4 6；</p>
+</li>
+<li><p>栈顶为6，等于序列目标元素，故6出栈，当前栈1 2 3 4；</p>
+</li>
+<li><p>栈顶为4，等于序列目标元素，故4出栈，当前栈1 2 3 ；</p>
+</li>
+<li><p>栈顶为3，等于序列目标元素，故3出栈，当前栈1 2  ；</p>
+</li>
+<li><p>栈顶为2，不等于序列目标元素，则7入栈，当前栈1 2 7；</p>
+</li>
+<li><p>栈顶为7，等于序列目标元素，故7出栈，当前栈1 2  ；</p>
+</li>
+<li><p>栈顶为2，等于序列目标元素，故2出栈，当前栈1  ；</p>
+</li>
+<li><p>栈顶为1，等于序列目标元素，故1出栈，当前栈为空  ；</p>
+<p>故该序列合法</p>
+</li>
+</ul>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Position;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    Position Top;</span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(<span class="keyword">int</span> MaxSize)</span></span>&#123;<span class="comment">//初始化堆栈</span></span><br><span class="line">    Stack S=(Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    S-&gt;Data=(ElementType *)<span class="built_in">malloc</span>(MaxSize*<span class="keyword">sizeof</span>(ElementType));</span><br><span class="line">    S-&gt;Top=<span class="number">-1</span>;</span><br><span class="line">    S-&gt;MaxSize=MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">Input_Squence</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="comment">//输入待判断的序列</span></span><br><span class="line">    <span class="keyword">int</span> *Arr;</span><br><span class="line">    Arr=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;Arr[i]);</span><br><span class="line">    <span class="keyword">return</span> Arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m,n,k;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>,&amp;m,&amp;n,&amp;k);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(k--)&#123;</span><br><span class="line">        <span class="keyword">int</span> *Arr, N=<span class="number">0</span>;<span class="comment">//使用Arr[N]报错，原因未知</span></span><br><span class="line">        <span class="keyword">int</span> Now=<span class="number">1</span>;</span><br><span class="line">        Stack S=CreateStack(m);</span><br><span class="line">        Arr=Input_Squence(n);</span><br><span class="line">        <span class="keyword">while</span> (N&lt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (S-&gt;Data[S-&gt;Top]!=Arr[N])<span class="comment">//判断栈顶元素和序列目标元素是都相等</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//若不相等，则判断是否入栈</span></span><br><span class="line">                 <span class="keyword">if</span> (S-&gt;Top==(m<span class="number">-1</span>))<span class="comment">//栈满</span></span><br><span class="line">                    <span class="keyword">break</span>;   </span><br><span class="line">                S-&gt;Data[++(S-&gt;Top)]=Now++;<span class="comment">//入栈</span></span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (S-&gt;Data[S-&gt;Top]==Arr[N])<span class="comment">//若相等，则出栈</span></span><br><span class="line">            &#123;</span><br><span class="line">                (S-&gt;Top)--;</span><br><span class="line">                N++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (S-&gt;Top==<span class="number">-1</span>)<span class="comment">//如果栈空，该序列合法</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="另一个更容易理解的思路"><a href="#另一个更容易理解的思路" class="headerlink" title="另一个更容易理解的思路"></a>另一个更容易理解的思路</h2><p>初始栈空，将元素1入栈；判断栈顶元素和序列目标元素是否相等，若不相等，则出栈；若相等，判断栈顶元素和序列目标元素的大小，如果栈顶元素大于序列目标元素，则序列非法，反之，判断是否栈满，栈满则非法，否则，继续入栈；</p>
+<h3 id="代码如下-1"><a href="#代码如下-1" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Position;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    Position Top;</span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(<span class="keyword">int</span> MaxSize)</span></span>&#123;<span class="comment">//初始化堆栈</span></span><br><span class="line">    Stack S=(Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    S-&gt;Data=(ElementType *)<span class="built_in">malloc</span>(MaxSize*<span class="keyword">sizeof</span>(ElementType));</span><br><span class="line">    S-&gt;Top=<span class="number">-1</span>;</span><br><span class="line">    S-&gt;MaxSize=MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">Input_Squence</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="comment">//输入待判断的序列</span></span><br><span class="line">    <span class="keyword">int</span> *Arr;</span><br><span class="line">    Arr=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;Arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m,n,k;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>,&amp;m,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">while</span>(k--)&#123;</span><br><span class="line">        <span class="keyword">int</span> *Arr, N=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> Now=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> Flag=<span class="number">0</span>;</span><br><span class="line">        Stack S=CreateStack(m);</span><br><span class="line">        Arr=Input_Squence(n);</span><br><span class="line">        <span class="keyword">while</span> (N&lt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (S-&gt;Top==<span class="number">-1</span>)<span class="comment">// 栈空</span></span><br><span class="line">            &#123;</span><br><span class="line">                S-&gt;Data[++(S-&gt;Top)]=Now++;</span><br><span class="line">            &#125;<span class="keyword">else</span><span class="comment">// 栈不为空，检查栈顶元素和序列目标元素是否相等</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (S-&gt;Data[S-&gt;Top]==Arr[N])<span class="comment">//相等，则出栈</span></span><br><span class="line">                &#123;</span><br><span class="line">                    (S-&gt;Top)--;</span><br><span class="line">                    N++;</span><br><span class="line">                &#125;<span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (S-&gt;Data[S-&gt;Top]&lt;Arr[N])<span class="comment">//若栈顶元素小于序列目标元素，则入栈</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">//判断是否栈满</span></span><br><span class="line">                        <span class="keyword">if</span> (S-&gt;Top==(m<span class="number">-1</span>))</span><br><span class="line">                        &#123;</span><br><span class="line">                            Flag=<span class="number">1</span>;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        S-&gt;Data[++(S-&gt;Top)]=Now++;<span class="comment">//入栈</span></span><br><span class="line">                    &#125;<span class="keyword">else</span><span class="comment">//若栈顶元素大于序列目标元素，该序列非法</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        Flag=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;        </span><br><span class="line">                &#125;           </span><br><span class="line">            &#125;      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Flag)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/07/Pop%20Sequence/" data-id="ckjh2hsc000059gv41xst9fmq" data-title="Pop Sequence" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/07/List%20Leaves/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          List Leaves
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/07/Root%20of%20AVL%20Tree/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Root of AVL Tree</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/13/%E6%97%85%E6%B8%B8%E8%A7%84%E5%88%92/">旅游规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/Saving%20James%20Bond%20-%20Hard%20Version/">Saving James Bond - Hard Version</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95/">哈利·波特的考试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/File%20Transfer/">File Transfer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/List%20Leaves/">List Leaves</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
